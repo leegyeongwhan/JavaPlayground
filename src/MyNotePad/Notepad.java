@@ -2,10 +2,7 @@ package MyNotePad;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 
 
 import javax.swing.JFileChooser;
@@ -83,15 +80,23 @@ public class Notepad extends JFrame {
         setTitle(chooser.getSelectedFile().getName());
     }
 
-    public void deleteFile() {
-
-    }
-
-    public void saveFile() {
-
+    //파일저장
+    public void saveFile(String str) {
+        BufferedWriter out = null;
+        File file = new File(fileName);
+        try {
+            out = new BufferedWriter(new FileWriter(fileName));
+            out.write(str);
+            this.setTitle(file.getName());
+            out.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void main(String[] args) {
         new Notepad();
     }
+
+
 }
