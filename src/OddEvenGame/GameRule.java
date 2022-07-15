@@ -3,40 +3,42 @@ package OddEvenGame;
 public class GameRule {
 
     Player player = new Player(1000);
-    int gameMoney = player.getStartMoney();
+    private int gameMoney = player.getStartMoney();
 
     public void gameStart(Betting bt) {
         bt.computerBet();
-        System.out.println(bt.computerStatus);
-        System.out.println(bt.playerStatus);
-        System.out.println(gameMoney);
         if (bt.computerStatus.equals(bt.playerStatus)) {
             System.out.println("이겼습니다!");
-            win();
+            gameMoney = win();
         } else {
             System.out.println("졌습니다");
-            lose();
+            gameMoney = lose();
         }
     }
 
-    public void calculation() {
+    public int calculation() {
+        System.out.println("소지금 = " + gameMoney);
         if (gameMoney >= 5000) {
             System.out.println("승리 하셨습니다!");
+            System.exit(0);
+        } else if (gameMoney <= 0) {
+            System.out.println("패배하셨습니다.");
+            System.exit(0);
         }
-//        else if (gameMoney <= 0) {
-//            System.out.println("패배하셨습니다.");
-//        }
+        return gameMoney;
     }
 
     public void exit() {
         System.exit(0);
     }
 
-    private void lose() {
-        gameMoney -= gameMoney;
+    private int lose() {
+        gameMoney -= 1000;
+        return gameMoney;
     }
 
-    private void win() {
-        gameMoney -= gameMoney;
+    private int win() {
+        gameMoney += gameMoney;
+        return gameMoney;
     }
 }

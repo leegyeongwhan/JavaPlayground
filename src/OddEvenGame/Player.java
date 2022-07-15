@@ -10,6 +10,4 @@ public class Player {
     public int getStartMoney() {
         return startMoney;
     }
-
-
 }

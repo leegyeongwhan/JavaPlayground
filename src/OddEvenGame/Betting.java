@@ -8,7 +8,6 @@ public class Betting {
     Status playerStatus;
 
     public void evenBet() {
-        System.out.println("!");
         playerStatus = Status.EVEN;
     }
 
