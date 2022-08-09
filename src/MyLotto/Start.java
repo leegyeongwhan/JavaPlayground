@@ -1,12 +1,12 @@
 package MyLotto;
 
-import java.util.Arrays;
 import java.util.Random;
 
 public class Start {
     Random random = new Random();
     static int[] myNumber = new int[6];
     static int[] realNumber = new int[6];
+    static int[] resultArray = new int[5];
 
     private void randomSetNumber(int[] realNumber) {
         for (int i = 0; i < realNumber.length; i++) {
@@ -17,6 +17,19 @@ public class Start {
                     break;
                 }
             }
+        }
+    }
+
+    public void initGame(int num) {
+        setRealNumber();
+        for (int i = 0; i < num; i++) {
+            setMyNumber();
+            checkNumber();
+        }
+        //    System.out.println("start = " + Arrays.toString(start.myNumber));
+        //    System.out.println("realNumber = " + Arrays.toString(start.realNumber));
+        for (int i : resultArray) {
+            System.out.println(i);
         }
     }
 
@@ -32,18 +45,8 @@ public class Start {
 
     //6 개 1등 5개 2등
 
-    public static void main(String[] args) {
-        Start start = new Start();
-        start.setMyNumber();
-        start.setRealNumber();
-        System.out.println("start = " + Arrays.toString(start.myNumber));
-        System.out.println("realNumber = " + Arrays.toString(start.realNumber));
-        System.out.println(checkNumber());
-    }
-
-
     //담청 확인 임의 담청배열과 내 배열과 비교 즉 두배열을 비교
-    private static String checkNumber() {
+    private static int checkNumber() {
         int checkCnt = 0;
         //1등 배열
         for (int i = 0; i < realNumber.length; i++) {
@@ -53,20 +56,24 @@ public class Start {
                 }
             }
         }
+        return getString(checkCnt);
+    }
 
+    private static int getString(int checkCnt) {
         switch (checkCnt) {
             case 6:
-                return "1등";
+                return resultArray[4] += 1;
             case 5:
-                return "2등";
+                return resultArray[3] += 1;
             case 4:
-                return "3등";
+                return resultArray[2] += 1;
             case 3:
-                return "4등";
+                return resultArray[1] += 1;
             default:
-                return "꽝";
+                return resultArray[0] += 1;
         }
     }
+
 
     //당첨 회차 생성
 
