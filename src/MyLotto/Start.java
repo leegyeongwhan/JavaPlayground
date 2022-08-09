@@ -28,9 +28,26 @@ public class Start {
         }
         //    System.out.println("start = " + Arrays.toString(start.myNumber));
         //    System.out.println("realNumber = " + Arrays.toString(start.realNumber));
-        for (int i : resultArray) {
-            System.out.println(i);
+        extracted();
+        System.out.println();
+
+        int money = 5000;
+        Data data = new Data();
+        long[] arr = data.arr;
+        long gap = 0;
+
+        for (int i = 0; i < resultArray.length; i++) {
+            gap += resultArray[i] * arr[i];
         }
+        System.out.println("순수익" + (gap - (money * num)));
+    }
+
+    private void extracted() {
+        System.out.println("1등 =" + resultArray[4]);
+        System.out.println("2등 =" + resultArray[3]);
+        System.out.println("3등 =" + resultArray[2]);
+        System.out.println("4등 =" + resultArray[1]);
+        System.out.println("꽝 =" + resultArray[0]);
     }
 
     //임의의 특정 담청 번호
